@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:managetoner/theme.dart';
+import '../globals.dart' as globals;
 
 class StatusPage extends StatefulWidget {
 
@@ -10,6 +11,14 @@ class StatusPage extends StatefulWidget {
 
 class _StatusPageState extends State<StatusPage> {
 
+    isFirstTime() async {
+      bool? firstconnexion = globals.preferences.getBool("firstconnexion");
+      if (firstconnexion == null) {
+
+        globals.preferences.setBool("firstconnexion", false);
+      }
+    }
+  late List<List<Map<String, List<dynamic>>>> stock;
   int _counter = 0;
   bool modifiable=false;
   void _inCounter() {
